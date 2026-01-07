@@ -21,8 +21,7 @@ This year we will host two different games. One is a fan favorite: chess, the ot
 
 ## Resources
 
-1. You have 16 CPU cores at your disposal, and a midsize GPU.
-1. You are allotted 10 gigabytes of disk space, 5 gigabytes of RAM, and 5 gigabytes of VRAM.
+You are allotted 10 gigabytes of disk space, 5 gigabytes of RAM, and 5 gigabytes of VRAM.
 
 note: be conservative with the resources, because exceeding your allotted time loses the game, and exceeding memory disqualifies your bot!
 
@@ -37,7 +36,7 @@ note: be conservative with the resources, because exceeding your allotted time l
 
 ## The mystery
 
-In  addition to chess, you can submit a bot to play a different game. The catch is that you will not know which game your engine will be playing. There are generally two ways of doing this. You can have the engine learn as it goes, or you can apply an algorithm which works for any environment (or use a combination, of course). The rules for submitting a bot for the mystery game are identical to those for chess. The only difference is that the class should be called `MysteryBot`.
+In  addition to chess, you can submit a bot to play a different game. The catch is that you will not know which game your engine will be playing. There are generally two ways of doing this. You can have the engine learn as it goes, or you can apply an algorithm which works for any environment (or use a combination, of course). The rules for submitting a bot for the mystery game are identical to those for chess. The only difference is that the class should be called `MysteryBot`. For the mystery game, we will implement a method (`get_state`) that outputs the state (or a description with everything that you need), as a Tensor.  
 
 ## Learning across games
 
