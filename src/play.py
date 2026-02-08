@@ -5,8 +5,6 @@ from src.definitions import GameBoard
 from src.chessboard import ChessBoard
 from src.load_engine import load_engine
 
-from copy import deepcopy
-
 
 def outcome_str(board: GameBoard) -> str:
     return {False: "Black won.", True: "White won.", None: "Draw."}[board.winner()]
@@ -49,9 +47,8 @@ def watch_engines(
         print(board)
         print("End of game.", outcome_str(board))
 
-    outcome = board.winner()
-    engine_one.reset(deepcopy(board.move_stack), outcome)
-    engine_two.reset(deepcopy(board.move_stack), outcome)
+    engine_one.reset(board.copy())
+    engine_two.reset(board.copy())
     return outcome_float(board)
 
 
@@ -83,7 +80,7 @@ def play_engine(
 
     print(board)
     print("End of game.", outcome_str(board))
-    engine.reset(deepcopy(board.move_stack), board.winner())
+    engine.reset(board.copy())
 
 
 def one_vs_one(
@@ -121,7 +118,7 @@ if "__main__" in __name__:
 
     human_play = True
     if human_play:
-        play_engine(engine_two, board, False)
+        play_engine(engine_one, board, False)
     else:
         print("running match")
         one_vs_one(engine_two, engine_one, 4)

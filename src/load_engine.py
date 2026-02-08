@@ -1,9 +1,11 @@
 # Stealing some old code
 import os
+import sys
 from importlib import import_module, reload
 
 
 BOT_DIR = "bots"
+sys.path.append(BOT_DIR)
 
 
 def load_engine(engine_name: str):

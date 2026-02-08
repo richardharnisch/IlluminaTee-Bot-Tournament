@@ -111,7 +111,8 @@ class Engine(ABC):
         """
         Note that the engine will be initialised with an opening \
         position of the game. This argument can be used to determine \
-        the state space shape, or learn other things about the environment.
+        the shape of elements in the state space, or learn other things \
+        about the environment.
         """
         super().__init__()
         # `name` is the only reserved attribute for an Engine
@@ -120,10 +121,13 @@ class Engine(ABC):
     def __call__(self, board: GameBoard) -> GameMove:
         pass
 
-    def update(self, game: list[GameMove], outcome: bool | None) -> None:
+    def update(self, game: GameBoard) -> None:
         """
         A method called before the model is removed from working memory.
         Use this method to save anything you need to allow the model to \
         get back to the state it was next time it gets loaded. 
+
+        The `game` argument is the final position of the game. 
+        You can use this to see how the game went and learn from it.
         """
         pass

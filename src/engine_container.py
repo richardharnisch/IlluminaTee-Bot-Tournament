@@ -2,7 +2,6 @@ import threading
 import _thread
 from time import perf_counter
 from contextlib import contextmanager
-from typing import Optional
 
 from src.definitions import Engine, GameBoard, GameMove
 
@@ -28,7 +27,7 @@ class EngineContainer(Engine):
         self.name = self.engine_class.name
         self.time = seconds
         self.increment = seconds_increment
-        self.reset([], None)
+        self.reset(None)
 
     @contextmanager
     def _time(self, timeout: float, message: str = "Operation timed out"):
@@ -64,8 +63,7 @@ class EngineContainer(Engine):
 
     def reset(
         self,
-        moves: list[GameMove],
-        outcome: Optional[bool],
+        outcome: GameBoard,
         seconds: float | None = None,
         increment: float | None = None,
     ) -> None:
@@ -76,7 +74,7 @@ class EngineContainer(Engine):
             return
 
         with self._time(120, f"Unload operation of engine {self.name} timed out"):
-            self.engine.update(moves, outcome)
+            self.engine.update(outcome)
 
         del self.engine
         self.engine = None
